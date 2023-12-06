@@ -1,17 +1,29 @@
 
-import { Request, Response } from 'express';
+import { Request, Response, query } from 'express';
 import { Inoticias_create, iNoticia } from '../interfaces/noticias.inteface';
-import { Repository } from 'typeorm';
+//import { Repository } from 'typeorm';
 import { dbcontext } from '../db/dbcontext';
 import { Noticia } from '../models/noticias.entity';
+import { ILike } from 'typeorm';
+import logger from '../helpers/logger';
+import { kMaxLength } from 'buffer';
+import { format } from 'path';
+import { Console, log } from 'console';
 
-export const noticiasIndex = (req: Request, res: Response) => {
-	// Aca devolver todas las noticias ordenadas por fecha
+export const noticiasIndex =async (req: Request, res: Response) => {
 
-	// ver documentacion de typeorm
-	const nombre = 'Pedro';
-	res.render('home/index', { nombre });
+	const noticiaRepository=dbcontext.getRepository(Noticia)
+
+	const noticias= await noticiaRepository.find({
+		order:{ create_at: 'DESC' },
+		take:10 
+	})
+	
+    
+	res.render('home/index_views_noticias', { noticias });
 };
+
+
 
 export const crearNoticiaView = (req: Request, res: Response) => {
 	res.render('noticias/crear');
@@ -38,3 +50,54 @@ try {
 }}
 
 
+//Obtener las noticias
+export const getNoticiaById= async (req: Request, res: Response) => {
+try{	
+	const noticiaRepository = dbcontext.getRepository(Noticia);
+	const noticia= await noticiaRepository.findOneBy({id:req.params.idNoticia})
+	res.render('noticias/buscar_noticia',{noticia})
+
+} catch (error) { 
+			logger.error(`No se pudo obtener la noticia con id ${req.params.id} desde el ip ${req.ip} `
+			);
+			res.status(404).json({ msg: 'No se pudo encontrar la noticia' });
+}}
+
+// 	try {
+// 		//const titulo=req.query.titulo?.toString();
+// 		//const contenido=req.query.contenido?.toString();
+// 		const idNoticia=req.query.id?.toString();
+		
+// 		const noticiaRepository = dbcontext.getRepository(Noticia);
+		
+// 		const noticia = await noticiaRepository.find({
+// 			where:  {
+// 					//titulo: ILike(`%${titulo || ''}%`),
+// 					//contenido: ILike(`%${contenido || ''}%`),
+// 					id:idNoticia
+// 				},
+// 				relations: {
+// 					comentarios: true,
+// 				},
+// 			},
+			
+// 		);
+		
+// 		if (!noticia) {
+// 			throw new Error();
+// 		}
+		
+// 		//res.json({ noticia,cantidad: noticia.length});
+		
+// 		console.log(noticia)	
+		
+// 		res.render('/noticia/noticia.buscar',{noticia})
+		
+		
+// 	} catch (error) { 
+// 		logger.error(
+// 			`No se pudo obtener la noticia con id ${req.params.id} desde el ip ${req.ip} `
+// 		);
+// 		res.status(404).json({ msg: 'No se pudo encontrar la noticia' });
+// 	}
+// };
