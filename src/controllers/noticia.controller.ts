@@ -1,6 +1,6 @@
 
 import { Request, Response, query } from 'express';
-import { Inoticias_create, iNoticia } from '../interfaces/noticias.inteface';
+import { Inoticias_create, iNoticia } from '../interfaces/noticias/noticias.inteface';
 //import { Repository } from 'typeorm';
 import { dbcontext } from '../db/dbcontext';
 import { Noticia } from '../models/noticias.entity';
