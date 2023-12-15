@@ -1,13 +1,5 @@
 import { Request, Response, query } from 'express';
-import { Inoticias_create, iNoticia } from '../interfaces/noticias/noticias.inteface';
-//import { Repository } from 'typeorm';
 import { dbcontext } from '../db/dbcontext';
-import { Noticia } from '../models/noticias.entity';
-import { ILike, IsNull } from 'typeorm';
-import logger from '../helpers/logger';
-import { kMaxLength } from 'buffer';
-import { format } from 'path';
-import { Console, log } from 'console';
 import { Iusuario } from '../interfaces/usuario/usuari.interface';
 import { Usuarios } from '../models/usuarios.entity';
 
