@@ -1,0 +1,35 @@
+<div class="container"></div>
+
+<h1>Todas las noticias 📰</h1> <h4>Total de Noticias: <%= noticias.length %></h4>
+
+  <table class="table table-striped ">
+    <thead>
+      <tr>
+        <th scope="row"></th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Contenido</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% noticias.forEach(noticia => { %>
+        
+      <tr>
+        <th scope="row"></th>
+        <td><h6><%= noticia.titulo %> </h6></td>
+        <td><%= noticia.contenido %></td>
+        <td>
+            <br>
+          <a  href="/noticias/traer/get/<%= noticia.id %>"><h6>📝</h6></a>
+          <br>
+          <a href="/noticias/borrar/<%= noticia.id %>"><h6>🗑️</h6></a>
+          <% if (noticia.deleted_at) { %>
+            <br>
+            <a href="/noticias/restore/<%= noticia.id %>"><h6>♻</h6></a>
+            <% } %>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

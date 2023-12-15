@@ -1,0 +1,19 @@
+<h1>Actualizar ✏️</h1>
+<br>
+<div>
+  <form name="noticias" action="/noticias/editar/patch/<%= noticia.id %>" method="POST">
+    <div class="mb-3">
+      <label for="titulo" class="form-label"><h5>Titulo</h5></label>
+      <textarea class="form-control" name="titulo" rows="1"><%= noticia.titulo %></textarea>
+    </div>
+ 
+    <div class="mb-3">
+      <label for="container" class="form-label"><h5>Contenido</h5></label>
+      <textarea class="form-control" name="contenido" rows="3"><%= noticia.contenido %></textarea>
+    </div>
+  <button type="submit" class="btn btn-success" style="background-color: rgba(119, 196, 42, 0.919)">📝 Actualizar noticia</button>
+  
+  </form>
+
+
+</div>

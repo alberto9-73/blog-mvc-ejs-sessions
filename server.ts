@@ -5,11 +5,14 @@ import { dbcontext } from './src/db/dbcontext';
 import { TypeORMError } from 'typeorm';
 import logger from './src/helpers/logger';
 import noticiasRoutes from './src/routes/noticia.routes';
+import usuarioRoutes from './src/routes/usuario.routes';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import authRoutes from './src/routes/auth.routes';
 import expressLayouts from 'express-ejs-layouts';
 import { Request, Response } from 'express';
+import { userInfo } from 'os';
+
 
 const app = express();
 app.use(express.urlencoded({extended:true}));
@@ -41,6 +44,7 @@ const port = process.env.PORT || 3000;
 
 
 app.use('/noticias', noticiasRoutes);
+app.use('/usuario', usuarioRoutes)
 
 
 app.use('/auth', authRoutes);

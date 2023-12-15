@@ -1,0 +1,36 @@
+<h1>Actualizar ✏️</h1>
+<br>
+<div>
+  <form name="usuario" action="/usuario/editar/post/<%= usuario.id %>" method="POST">
+    <div class="mb-3">
+        <label for="id" class="form-label"><h5>ID</h5></label>
+        <textarea class="form-control" name="id" disabled rows="1"><%= usuario.id %></textarea>
+      </div>
+
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><h5>Nombre</h5></label>
+      <textarea class="form-control" name="nombre" rows="1"><%= usuario.nombre %></textarea>
+    </div>
+  
+    <div class="mb-3">
+       <label for="apellido" class="form-label"><h5>Apellido</h5></label>
+       <textarea class="form-control" name="apellido" rows="1"><%= usuario.apellido %></textarea>
+    </div>
+
+     <div class="mb-3">
+       <label for="email" class="form-label"><h5>E-mail</h5></label>
+       <textarea class="form-control" disable name="email" disabled rows="1"><%= usuario.email%></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label for="pass" class="form-label"><h5>Password</h5></label>
+        <textarea class="form-control"  name="pass" disabled rows="1"><%= usuario.pass%></textarea>
+     </div>
+
+
+  <button type="submit" class="btn btn-success" style="background-color: rgba(119, 196, 42, 0.919)">📝 Actualizar Usuario</button>
+  
+  </form>
+
+
+</div>

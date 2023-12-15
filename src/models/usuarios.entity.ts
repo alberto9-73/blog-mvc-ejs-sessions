@@ -2,6 +2,7 @@ import {
 	BeforeInsert,
 	Column,
 	CreateDateColumn,
+	DeleteDateColumn,
 	Entity,
 	OneToMany,
 	PrimaryGeneratedColumn,
@@ -33,6 +34,9 @@ export class Usuarios {
 
 	@UpdateDateColumn()
 	updated_at: Date;
+
+	@DeleteDateColumn()
+	deleted_at: Date;
 
 	@OneToMany(() => Noticia, (n) => n.usuario)
 	noticias: Noticia[];

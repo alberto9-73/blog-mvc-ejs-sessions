@@ -1,0 +1,38 @@
+<container>
+
+
+
+<h1>Listado de Usuarios 🪪</h1>
+<br>
+<table class="table table-striped ">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Id</th>
+      </tr>
+    </thead>
+    <tbody>
+
+       <% usuarios.forEach(usuario => { %>
+
+      <tr>
+        <th scope="row"></th>
+        <td> <%= usuario.nombre %>  </td>
+        <td> <%= usuario.apellido %></td>
+        <td> <%= usuario.id %></td>
+        <td>
+          <a  href="/usuario/traer/get/<%= usuario.id %>"><h6>📝</h6></a>
+          <br>
+          <a href="/usuario/borrar/<%= usuario.id %>"><h6>🗑️</h6></a>
+          <% if (usuario.deleted_at) { %>
+            <br>
+            <a href="/usuario/restore/<%= usuario.id %>"><h6>♻</h6></a>
+            <% } %>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+    </table>
+</container>

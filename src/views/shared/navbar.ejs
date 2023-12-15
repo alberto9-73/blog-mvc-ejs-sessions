@@ -4,19 +4,41 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01"> 
-        <a class="navbar-brand" href="#"><h2>💀</h2></a>
+        <a class="navbar-brand" href="#"><h2>🩻</h2></a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/noticias">Noticias</a>
+            <a class="nav-link active" aria-current="page" href="/noticias">Home</a> 
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/noticias/crear">Crear noticias</a>
-          
-        </ul>
-        <form class="d-flex" >
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/noticias" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              📃 Noticias
+          </a>
+          <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/noticias/listar">Listado</a></li>
+              <li><a class="dropdown-item" href="/noticias/crear">Crear</a></li>
+
+          </ul>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              🪪 Usuarios
+          </a>
+          <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/usuario/listar">Listado</a></li>
+              <li><a class="dropdown-item" href="/usuario/crear">Crear</a></li>
+
+          </ul>
+      </li>
+  </ul>
+
+</div>
+        <!-- <form class="d-flex" >
           <input class="form-control me-3" type="search" placeholder="🔍" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
+        </form> -->
       </div>
     </div>
   </nav>
